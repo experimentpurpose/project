@@ -1,25 +1,25 @@
 # assets/fonts/
 
-Yeh folder **self-hosted font files** (jaise .woff2, .ttf) rakhne ke liye hai. Agar aap chahte ho ki aapka project bina internet (offline) ke bhi sahi fonts dikhaye, toh aap files ko yahan save kar sakte ho.
+This folder is for **self-hosted font files** (like .woff2, .ttf). You can save them here if you want your project to work offline without the internet.
 
-## Yeh folder abhi khali kyun hai?
+## Why is this folder empty right now?
 
-Kyunki abhi hum apne fonts (Space Grotesk, Inter, aur JetBrains Mono) directly Google Fonts se load kar rahe hain. Har HTML file ke `<head>` tag mein humne yeh `<link>` add kiya hua hai:
+Because we are currently loading our fonts (Space Grotesk, Inter, and JetBrains Mono) directly from Google Fonts. We've added this `<link>` to the `<head>` tag in every HTML file:
 
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 ```
 
-Beginners ke liye yeh sabse simple tareeka hai typography use karne ka, bina kisi extra file ko manage kiye!
+This is the simplest way for beginners to use typography without managing extra files!
 
-## Local fonts kaise use karein? (Ek chhota sa exercise for Khushi)
+## How to use local fonts? (A short exercise for Khushi)
 
-Agar aapko try karna hai ki offline fonts kaise kaam karte hain, toh yeh steps follow karo:
+If you want to try how offline fonts work, follow these steps:
 
-1. Jo font chahiye uski `.woff2` file Google Fonts se download karo.
-2. Us file ko is folder mein rakh dijiye (jaise `assets/fonts/Inter-Regular.woff2`).
-3. Apni `css/style.css` file mein `@font-face` ka rule add karo, kuch is tarah:
+1. Download the `.woff2` file of the font you want from Google Fonts.
+2. Place that file in this folder (e.g., `assets/fonts/Inter-Regular.woff2`).
+3. Add a `@font-face` rule in your `css/style.css` file, like this:
 
 ```css
 @font-face {
@@ -30,7 +30,6 @@ Agar aapko try karna hai ki offline fonts kaise kaam karte hain, toh yeh steps f
 }
 ```
 
-4. IN the end, Google Fonts wale `<link>` tags ko apni HTML files se hata dijiye.
+4. Finally, remove the Google Fonts `<link>` tags from your HTML files.
 
-This is a great exercise for understanding how browsers load fonts
-and the difference between a CDN-hosted font and a self-hosted one.
+This is a great exercise for understanding how browsers load fonts!
