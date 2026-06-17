@@ -11,14 +11,14 @@ Kyunki abhi hum apne fonts (Space Grotesk, Inter, aur JetBrains Mono) directly G
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 ```
 
-Beginners ke liye yeh sabse simple tareeqa hai typography use karne ka, bina kisi extra file ko manage kiye!
+Beginners ke liye yeh sabse simple tareeka hai typography use karne ka, bina kisi extra file ko manage kiye!
 
 ## Local fonts kaise use karein? (Ek chhota sa exercise for Khushi)
 
 Agar aapko try karna hai ki offline fonts kaise kaam karte hain, toh yeh steps follow karo:
 
 1. Jo font chahiye uski `.woff2` file Google Fonts se download karo.
-2. Us file ko is folder mein rakh do (jaise `assets/fonts/Inter-Regular.woff2`).
+2. Us file ko is folder mein rakh dijiye (jaise `assets/fonts/Inter-Regular.woff2`).
 3. Apni `css/style.css` file mein `@font-face` ka rule add karo, kuch is tarah:
 
 ```css
@@ -30,6 +30,7 @@ Agar aapko try karna hai ki offline fonts kaise kaam karte hain, toh yeh steps f
 }
 ```
 
-4. Aakhir mein, Google Fonts wale `<link>` tags ko apni HTML files se hata do.
+4. IN the end, Google Fonts wale `<link>` tags ko apni HTML files se hata dijiye.
 
-Yeh ek bohot achi exercise hai yeh samajhne ke liye ki browsers fonts kaise load karte hain! 😊
+This is a great exercise for understanding how browsers load fonts
+and the difference between a CDN-hosted font and a self-hosted one.
