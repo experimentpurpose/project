@@ -1,0 +1,162 @@
+/* =========================================================================
+   css/animations.css
+   -------------------------------------------------------------------------
+   PURPOSE: Every @keyframes definition and every animation-related
+   utility class lives in this one file. Splitting animations out from
+   style.css means:
+     - you can find "what moves on this page" in one place
+     - you can delete this file entirely to instantly turn off all motion
+       (handy for testing or for users who prefer reduced motion)
+
+   How it's used:
+     - main.js adds the class ".is-visible" to elements with the class
+       ".reveal" once they scroll into view (see js/main.js).
+     - Hover/transition animations (like the feature card lift) are
+       defined inline in style.css next to the component they belong to,
+       since they're tightly coupled to that component's hover state.
+       This file focuses on KEYFRAME animations and reveal-on-scroll,
+       which are reused across many different components.
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   SCROLL-REVEAL
+   Elements start slightly faded/translated, then animate into place
+   once JavaScript (main.js) marks them as visible using IntersectionObserver.
+   ------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger helper classes - apply alongside .reveal to delay items in a
+   list/grid so they animate in one after another instead of all at once. */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* -------------------------------------------------------------------------
+   FADE IN (used for the whole page on first load, and for the
+   contact form success banner)
+   ------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease both;
+}
+
+/* -------------------------------------------------------------------------
+   SLIDE DOWN (used when the success banner appears above the contact form)
+   ------------------------------------------------------------------------- */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-down {
+  animation: slideDown 0.4s ease both;
+}
+
+/* -------------------------------------------------------------------------
+   PULSE
+   A soft, looping glow used behind the hero image and on the live
+   "status dot" in the stats section, to suggest real-time monitoring.
+   ------------------------------------------------------------------------- */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(94, 230, 176, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(94, 230, 176, 0);
+  }
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  animation: pulseGlow 2.4s ease-out infinite;
+  margin-right: 0.4rem;
+}
+
+/* -------------------------------------------------------------------------
+   SHIMMER
+   A subtle moving gradient used as a loading state on the contact
+   form's submit button while contact.js simulates sending the message.
+   ------------------------------------------------------------------------- */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+
+.btn-loading {
+  color: transparent !important;
+  position: relative;
+  pointer-events: none;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(11, 13, 17, 0.3);
+  border-top-color: #0b0d11;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* -------------------------------------------------------------------------
+   FLOAT
+   A slow, gentle vertical drift applied to the hero media frame so the
+   landing page doesn't feel completely static, without being distracting.
+   ------------------------------------------------------------------------- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* -------------------------------------------------------------------------
+   ACCESSIBILITY: respect users who have asked their OS/browser to
+   minimize motion. This overrides every animation above.
+   ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

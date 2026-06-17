@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--
+  about.html
+  -----------------------------------------------------------------------
+  PURPOSE: The "About" page. Tells the company's story, lists its
+  values, and introduces the team. Reuses the exact same navbar/footer
+  markup and the exact same CSS/JS files as index.html, that repetition
+  is intentional for this learning project. Toh aapko yhan ki cheezein edit krni
+  hai
+  -----------------------------------------------------------------------
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Pulsegrid</title>
+  <meta name="description"
+    content="Learn about Pulsegrid's mission, values, and the team building real-time infrastructure monitoring.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <link rel="icon" href="images/logo.png" type="image/png">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="images/logo.png" alt="Pulsegrid logo">
+        Pulsegrid
+      </a>
+
+      <ul class="navbar-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="navbar-cta-mobile">
+          <a href="contact.html" class="btn btn-primary btn-block">Get Started</a>
+        </li>
+      </ul>
+
+      <div class="navbar-cta">
+        <a href="contact.html" class="btn btn-primary">Get Started</a>
+      </div>
+
+      <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ===================================================================
+         PAGE HEADER
+         =================================================================== -->
+    <header class="page-header">
+      <div class="container reveal">
+        <span class="eyebrow">About Pulsegrid</span>
+        <h1>We started Pulsegrid because dashboards weren't keeping up.</h1>
+        <p>A small team obsessed with making infrastructure understandable, not just visible.</p>
+      </div>
+    </header>
+
+    <!-- ===================================================================
+         OUR STORY
+         =================================================================== -->
+    <section class="section">
+      <div class="container grid grid--2">
+        <div class="reveal">
+          <span class="eyebrow">Our story</span>
+          <h2>Built by engineers who got paged too often</h2>
+          <p>
+            Pulsegrid began in 2023 when three infrastructure engineers
+            got tired of staring at a dozen disconnected dashboards
+            during every incident, trying to piece together what had
+            actually gone wrong.
+          </p>
+          <p>
+            Instead of building another metrics graph, we set out to
+            build a system that understands the relationships between
+            services, so when something breaks, you see the cause,
+            not just a wall of red numbers.
+          </p>
+          <p>
+            Today, Pulsegrid commits to provide real-time alerting and monitoring to the engineering teams to turn
+            raw telemetry into decisions they can act on in seconds.
+          </p>
+        </div>
+        <div class="hero-media reveal reveal-delay-2">
+          <img src="images/team.jpg" alt="The Pulsegrid team collaborating in the office">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         MISSION / VALUES
+         =================================================================== -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">What we believe</span>
+          <h2>The principles behind every feature we ship</h2>
+        </div>
+
+        <div class="grid grid--3">
+          <div class="feature-card reveal reveal-delay-1">
+            <h3>Clarity over noise</h3>
+            <p>A dashboard nobody can read at 3 a.m. during an outage isn't actually helpful. We design for the worst
+              moments, not the demo.</p>
+          </div>
+          <div class="feature-card reveal reveal-delay-2">
+            <h3>Trust through transparency</h3>
+            <p>We show our reasoning, not just a verdict. Every alert explains why it fired and what changed.</p>
+          </div>
+          <div class="feature-card reveal reveal-delay-3">
+            <h3>Built to be outgrown</h3>
+            <p>We'd rather you outgrow a feature than be locked into one. Our tools stay simple as your systems get
+              complex.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         TEAM SECTION
+         =================================================================== -->
+    <section class="section" id="team">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">The team</span>
+          <h2>A small team, on purpose</h2>
+          <p>Every person at Pulsegrid has spent time on an on-call rotation — we build for ourselves first.</p>
+        </div>
+
+        <div class="grid grid--4">
+          <div class="team-card reveal reveal-delay-1">
+            <div class="team-photo"><img src="images/chetan.jpg" alt="Portrait placeholder for Maya Chen"></div>
+            <h3>Chetan Verma</h3>
+            <span class="team-role">Founder &amp; CEO & CTO</span>
+          </div>
+          <div class="team-card reveal reveal-delay-2">
+            <div class="team-photo"><img src="images/anubhav.jpg" alt="Portrait placeholder for Daniel Osei"></div>
+            <h3>Anubhav Singh Rajputh</h3>
+            <span class="team-role">Co-founder &amp; CFO</span>
+          </div>
+          <div class="team-card reveal reveal-delay-3">
+            <div class="team-photo"><img src="images/aarohi.jpg" alt="Portrait placeholder for Priya Patel"></div>
+            <h3>Aarohi Sharma</h3>
+            <span class="team-role">Head of Product</span>
+          </div>
+          <div class="team-card reveal reveal-delay-4">
+            <div class="team-photo"><img src="images/avni.jpg" alt="Portrait placeholder for Tomas Novak"></div>
+            <h3>Avni Singhania</h3>
+            <span class="team-role">Lead Engineer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         CTA BANNER
+         =================================================================== -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <h2>Want to work on problems like these?</h2>
+          <p>We're a small team that ships fast and cares deeply about the people who depend on our uptime.</p>
+          <a href="contact.html" class="btn btn-primary">Get in touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="Pulsegrid logo">
+          <p>Real-time clarity for complex systems. Built for engineering teams who refuse to be surprised.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="index.html#features">Features</a>
+          <a href="index.html#stats">Statistics</a>
+          <a href="contact.html">Pricing</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="about.html#team">Team</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Pulsegrid on GitHub"><img class="social-icon" src="assets/icons/icon-github.svg"
+                alt=""></a>
+            <a href="#" aria-label="Pulsegrid on Twitter"><img class="social-icon" src="assets/icons/icon-twitter.svg"
+                alt=""></a>
+            <a href="#" aria-label="Pulsegrid on LinkedIn"><img class="social-icon" src="assets/icons/icon-linkedin.svg"
+                alt=""></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="current-year"></span> Pulsegrid, Inc. All rights reserved.</span>
+        <span>Built as a learning project — not a real company.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/navbar.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+
+</html>

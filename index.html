@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--
+  index.html
+  -----------------------------------------------------------------------
+  PURPOSE: This is the HOMEPAGE of the site 
+  [for khushi]
+  Iske alawa bhi html files hai for different screens jaise ki aap dekhoge
+  ki 3 screens hai, ek contact ek main jo ki yeh hai and ek about wala section.
+  toh aapko basically yhan ki files ke saath edits krne hai!!
+  -----------------------------------------------------------------------
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulsegrid — Real-time clarity for complex systems</title>
+  <meta name="description"
+    content="Pulsegrid helps engineering teams monitor, understand, and predict the health of their infrastructure in real time.">
+
+  <!-- Google Fonts: see assets/fonts/README.md for how to self-host these instead -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <!--
+    CSS load order matters here:
+    1. style.css      -> defines the variables (colors, fonts) everything else uses
+    2. navbar.css      -> styles the nav, depends on style.css's variables
+    3. animations.css  -> keyframes + reveal classes, can load any time
+  -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <link rel="icon" href="images/logo.png" type="image/png">
+</head>
+
+<body>
+
+  <!-- =====================================================================
+       NAVBAR
+       Identical markup is repeated on every page so navbar.css/navbar.js
+       can target it consistently. In a larger real-world project this
+       would likely be generated from a template/include instead of
+       copy-pasted, but for a beginner learning project, seeing the full
+       markup on every page makes it easier to study.
+       ===================================================================== -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="images/logo.png" alt="Pulsegrid logo">
+        Pulsegrid
+      </a>
+
+      <ul class="navbar-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="navbar-cta-mobile">
+          <a href="contact.html" class="btn btn-primary btn-block">Get Started</a>
+        </li>
+      </ul>
+
+      <div class="navbar-cta">
+        <a href="contact.html" class="btn btn-primary">Get Started</a>
+      </div>
+
+      <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ===================================================================
+         HERO SECTION
+         The first thing a visitor sees. Headline + supporting copy on the
+         left, a preview image on the right.
+         =================================================================== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Infrastructure monitoring</span>
+          <h1>Real-time clarity for <span class="highlight">complex systems</span>.</h1>
+          <p>
+            Pulsegrid turns thousands of scattered metrics into one clear,
+            living picture of your infrastructure — so your team can catch
+            problems before customers ever notice them.
+          </p>
+          <div class="hero-actions">
+            <a href="contact.html" class="btn btn-primary">Start free trial</a>
+            <a href="about.html" class="btn btn-secondary">Learn how it works</a>
+          </div>
+          <div class="hero-meta">
+            <span><span class="status-dot"></span>All systems operational</span>
+            <span>No credit card required</span>
+          </div>
+        </div>
+
+        <div class="hero-media reveal reveal-delay-2">
+          <div class="float">
+            <img src="images/dashboard.jpg" alt="Preview of the Pulsegrid monitoring dashboard">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         FEATURES SECTION
+         Four cards explaining the core product capabilities.
+         =================================================================== -->
+    <section class="section section--alt" id="features">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Why teams choose Pulsegrid</span>
+          <h2>Everything you need to stay ahead of incidents</h2>
+          <p>Built for engineering teams who would rather prevent outages than explain them.</p>
+        </div>
+
+        <div class="grid grid--4">
+          <div class="feature-card reveal reveal-delay-1">
+            <div class="feature-icon"><img src="assets/icons/icon-pulse.svg" alt=""></div>
+            <h3>Real-time monitoring</h3>
+            <p>Live metrics from every service, updated every few seconds, with zero configuration sprawl.</p>
+          </div>
+
+          <div class="feature-card reveal reveal-delay-2">
+            <div class="feature-icon"><img src="assets/icons/icon-alert.svg" alt=""></div>
+            <h3>Smart alerts</h3>
+            <p>Get notified about what matters, not every minor blip — alerts learn your system's normal patterns.</p>
+          </div>
+
+          <div class="feature-card reveal reveal-delay-3">
+            <div class="feature-icon"><img src="assets/icons/icon-chart.svg" alt=""></div>
+            <h3>Predictive analytics</h3>
+            <p>Spot capacity issues weeks before they become outages with trend-based forecasting.</p>
+          </div>
+
+          <div class="feature-card reveal reveal-delay-4">
+            <div class="feature-icon"><img src="assets/icons/icon-team.svg" alt=""></div>
+            <h3>Team collaboration</h3>
+            <p>Shared dashboards, inline comments, and on-call handoffs that keep everyone in sync.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         STATISTICS SECTION
+         Numbers animate upward from 0 once they scroll into view
+         (see initStatsCounters() in js/main.js).
+         =================================================================== -->
+    <section class="section" id="stats">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">By the numbers</span>
+          <h2>Trusted by infrastructure teams everywhere</h2>
+        </div>
+
+        <div class="grid grid--4 stats-grid">
+          <div class="reveal reveal-delay-1">
+            <span class="stat-number" data-count-to="12400" data-suffix="+">0</span>
+            <span class="stat-label">Servers monitored</span>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <span class="stat-number" data-count-to="99" data-suffix=".99%">0</span>
+            <span class="stat-label">Platform uptime</span>
+          </div>
+          <div class="reveal reveal-delay-3">
+            <span class="stat-number" data-count-to="540" data-suffix="+">0</span>
+            <span class="stat-label">Teams onboard</span>
+          </div>
+          <div class="reveal reveal-delay-4">
+            <span class="stat-number" data-count-to="24" data-suffix="/7">0</span>
+            <span class="stat-label">Incident response</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         CTA BANNER
+         =================================================================== -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <h2>Ready to see your whole system clearly?</h2>
+          <p>Set up your first dashboard in under five minutes — no credit card required.</p>
+          <a href="contact.html" class="btn btn-primary">Talk to the team</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="Pulsegrid logo">
+          <p>Real-time clarity for complex systems. Built for engineering teams who refuse to be surprised.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="index.html#features">Features</a>
+          <a href="index.html#stats">Statistics</a>
+          <a href="contact.html">Pricing</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="about.html#team">Team</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Pulsegrid on GitHub"><img class="social-icon" src="assets/icons/icon-github.svg"
+                alt=""></a>
+            <a href="#" aria-label="Pulsegrid on Twitter"><img class="social-icon" src="assets/icons/icon-twitter.svg"
+                alt=""></a>
+            <a href="#" aria-label="Pulsegrid on LinkedIn"><img class="social-icon" src="assets/icons/icon-linkedin.svg"
+                alt=""></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="current-year"></span> Pulsegrid, Inc. All rights reserved.</span>
+        <span>Built as a learning project — not a real company.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!--
+    JS load order: navbar.js and main.js are used on every page.
+    contact.js is also included site-wide for simplicity, but it quietly
+    does nothing unless it finds a #contact-form element on the page.
+  -->
+  <script src="js/navbar.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+
+</html>

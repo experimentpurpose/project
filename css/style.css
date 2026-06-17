@@ -1,0 +1,548 @@
+/* =========================================================================
+   css/style.css
+   -------------------------------------------------------------------------
+   PURPOSE: The MAIN stylesheet for the whole site.
+   It holds things that are shared by every page:
+     1. Design tokens (CSS variables) - colors, fonts, spacing
+     2. CSS reset / base element styles
+     3. Reusable layout utilities (.container, .grid, .section, etc.)
+     4. Buttons and form controls
+     5. Section-specific styles that appear on more than one page
+        (hero, features, stats, team, footer)
+
+   Navbar-only styles live in navbar.css.
+   Animation keyframes & scroll-reveal classes live in animations.css.
+   This separation keeps each file focused on ONE job, which is the
+   whole point of this learning project: easy-to-scan, single-purpose files.
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   1. DESIGN TOKENS
+   Centralizing colors/fonts/spacing here means changing the brand's look
+   later only requires editing values in ONE place instead of hunting
+   through every CSS file.
+   ------------------------------------------------------------------------- */
+:root {
+  /* Color palette - dark, modern "tech startup" theme */
+  --color-bg: #0f1115;          /* page background */
+  --color-bg-alt: #14171d;      /* alternating section background */
+  --color-surface: #1b2029;     /* cards, inputs, raised surfaces */
+  --color-surface-hover: #232a36;
+  --color-border: #2a313f;
+
+  --color-text: #f4f5f7;        /* primary text on dark background */
+  --color-text-muted: #9aa3b2;  /* secondary / supporting text */
+  --color-text-faint: #5c6473;  /* least important text, captions */
+
+  --color-accent: #5ee6b0;      /* primary brand accent (mint/jade) */
+  --color-accent-dark: #34b584; /* darker accent, used for hover states */
+  --color-accent-warm: #ff8a5b; /* secondary accent for contrast/CTAs */
+
+  --color-success: #5ee6b0;
+  --color-error: #ff6b6b;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif; /* headings */
+  --font-body: 'Inter', 'Segoe UI', sans-serif;             /* paragraphs, UI */
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;  /* stats, labels */
+
+  /* Spacing scale (used for padding/margin/gap consistently) */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Shared values */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --max-width: 1180px;
+  --transition-fast: 150ms ease;
+  --transition-base: 280ms ease;
+}
+
+/* -------------------------------------------------------------------------
+   2. RESET / BASE ELEMENT STYLES
+   A small reset keeps default browser styling from fighting with our design.
+   ------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 var(--space-sm) 0;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); }
+h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+h3 { font-size: 1.25rem; }
+
+p {
+  margin: 0 0 var(--space-sm) 0;
+  color: var(--color-text-muted);
+}
+
+/* Visible focus outline everywhere - important for keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* -------------------------------------------------------------------------
+   3. LAYOUT UTILITIES
+   Generic, reusable building blocks used across every page.
+   ------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-2xl) 0;
+}
+
+.section--alt {
+  background-color: var(--color-bg-alt);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--space-xl) auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: rgba(94, 230, 176, 0.1);
+  border: 1px solid rgba(94, 230, 176, 0.25);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: var(--space-sm);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 900px) {
+  .grid--3, .grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
+}
+
+/* -------------------------------------------------------------------------
+   4. BUTTONS & FORM CONTROLS
+   ------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition-fast), background-color var(--transition-fast),
+              border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #0b0d11;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-dark);
+  box-shadow: 0 0 0 4px rgba(94, 230, 176, 0.15);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-group {
+  margin-bottom: var(--space-md);
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--color-text);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+.form-control.is-invalid {
+  border-color: var(--color-error);
+}
+
+.form-error {
+  display: block;
+  min-height: 1.1rem;
+  font-size: 0.8rem;
+  color: var(--color-error);
+  margin-top: 0.3rem;
+}
+
+.form-success-banner {
+  background: rgba(94, 230, 176, 0.12);
+  border: 1px solid rgba(94, 230, 176, 0.35);
+  color: var(--color-accent);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-md);
+}
+
+/* -------------------------------------------------------------------------
+   5. PAGE HEADER (used on about.html and contact.html, below the navbar)
+   ------------------------------------------------------------------------- */
+.page-header {
+  padding: var(--space-2xl) 0 var(--space-lg);
+  text-align: center;
+}
+
+.page-header p {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* -------------------------------------------------------------------------
+   6. HERO SECTION (index.html)
+   ------------------------------------------------------------------------- */
+.hero {
+  padding: var(--space-2xl) 0;
+  overflow: hidden;
+  position: relative;
+  background-image: linear-gradient(180deg, rgba(15, 17, 21, 0.94), rgba(15, 17, 21, 0.98)), url('../images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.hero-copy h1 {
+  margin-bottom: var(--space-md);
+}
+
+.hero-copy .highlight {
+  color: var(--color-accent);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.hero-meta {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text-faint);
+}
+
+.hero-media {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+  }
+  .hero-media {
+    order: -1;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   7. FEATURES SECTION (index.html)
+   ------------------------------------------------------------------------- */
+.feature-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-accent);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: rgba(94, 230, 176, 0.1);
+  color: var(--color-accent);
+  margin-bottom: var(--space-md);
+}
+
+.feature-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.feature-card h3 {
+  margin-bottom: var(--space-xs);
+}
+
+/* -------------------------------------------------------------------------
+   8. STATS SECTION (index.html)
+   ------------------------------------------------------------------------- */
+.stats-grid {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-mono);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--color-accent);
+  display: block;
+}
+
+.stat-label {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+/* -------------------------------------------------------------------------
+   9. TEAM SECTION (about.html)
+   ------------------------------------------------------------------------- */
+.team-card {
+  text-align: center;
+}
+
+.team-photo {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-sm);
+  aspect-ratio: 4 / 3;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-card h3 {
+  margin-bottom: 0.1rem;
+}
+
+.team-role {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* -------------------------------------------------------------------------
+   10. CTA BANNER (shared)
+   ------------------------------------------------------------------------- */
+.cta-banner {
+  background: linear-gradient(135deg, rgba(94, 230, 176, 0.12), rgba(255, 138, 91, 0.08));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.cta-banner h2 {
+  margin-bottom: var(--space-xs);
+}
+
+/* -------------------------------------------------------------------------
+   11. FOOTER (shared across every page)
+   ------------------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-xl) 0 var(--space-lg);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.footer-brand img {
+  height: 32px;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-col h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-col a {
+  display: block;
+  color: var(--color-text-muted);
+  padding: 0.3rem 0;
+  transition: color var(--transition-fast);
+}
+
+.footer-col a:hover {
+  color: var(--color-accent);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-text-faint);
+}
+
+.social-icons {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.social-icon:hover {
+  opacity: 1;
+}
+
+@media (max-width: 760px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

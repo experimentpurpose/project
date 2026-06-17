@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--
+  contact.html
+  -----------------------------------------------------------------------
+  PURPOSE: The "Contact" page. Holds the contact form that js/contact.js
+  validates and "submits" (simulated, since this is a static learning
+  project with no real backend/server to send data to). Also shows
+  direct contact details and reuses the shared navbar/footer.
+  -----------------------------------------------------------------------
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Pulsegrid</title>
+  <meta name="description"
+    content="Get in touch with the Pulsegrid team — sales questions, support, or partnership inquiries.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <link rel="icon" href="images/logo.png" type="image/png">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="images/logo.png" alt="Pulsegrid logo">
+        Pulsegrid
+      </a>
+
+      <ul class="navbar-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="navbar-cta-mobile">
+          <a href="contact.html" class="btn btn-primary btn-block">Get Started</a>
+        </li>
+      </ul>
+
+      <div class="navbar-cta">
+        <a href="contact.html" class="btn btn-primary">Get Started</a>
+      </div>
+
+      <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <div class="container reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h1>Let's talk about your infrastructure.</h1>
+        <p>Questions about pricing, a demo, or just want to say hello? We read every message ourselves.</p>
+      </div>
+    </header>
+
+    <!-- ===================================================================
+         CONTACT FORM + CONTACT INFO
+         =================================================================== -->
+    <section class="section">
+      <div class="container grid grid--2">
+
+        <!-- -------------------------------------------------------------
+             CONTACT FORM
+             js/contact.js listens for this form's "submit" event,
+             validates every field, and simulates sending it.
+             ------------------------------------------------------------- -->
+        <div class="reveal">
+          <div id="form-success" class="form-success-banner" role="status" hidden>
+            Thanks! Your message has been sent — we'll reply within one business day.
+          </div>
+
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="name">Full name</label>
+              <input class="form-control" type="text" id="name" name="name" placeholder="Ada Lovelace"
+                autocomplete="name">
+              <span class="form-error" id="name-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Work email</label>
+              <input class="form-control" type="email" id="email" name="email" placeholder="ada@yourcompany.com"
+                autocomplete="email">
+              <span class="form-error" id="email-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject</label>
+              <select class="form-control" id="subject" name="subject">
+                <option value="">Choose a topic…</option>
+                <option value="sales">Sales &amp; pricing</option>
+                <option value="support">Technical support</option>
+                <option value="partnership">Partnership</option>
+                <option value="other">Something else</option>
+              </select>
+              <span class="form-error" id="subject-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="5"
+                placeholder="Tell us a bit about your infrastructure and what you're hoping to solve…"></textarea>
+              <span class="form-error" id="message-error"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Send message</button>
+          </form>
+        </div>
+
+        <!-- -------------------------------------------------------------
+             CONTACT INFO SIDEBAR
+             ------------------------------------------------------------- -->
+        <div class="reveal reveal-delay-2">
+          <div class="feature-card" style="margin-bottom: var(--space-md);">
+            <h3>Email us</h3>
+            <p>For general questions or support requests.</p>
+            <p style="color: var(--color-accent); font-family: var(--font-mono);">pulsegridcoustomercare@gmail.com</p>
+          </div>
+
+          <div class="feature-card" style="margin-bottom: var(--space-md);">
+            <h3>Call us</h3>
+            <p>Monday–Friday, 9am–6pm (IST).</p>
+            <p style="color: var(--color-accent); font-family: var(--font-mono);">+91 8595450545</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Visit us</h3>
+            <p>Pulsegrid HQ</p>
+            <p style="color: var(--color-accent); font-family: var(--font-mono);">VasantKunj, 110070<br>New Delhi, India
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="Pulsegrid logo">
+          <p>Real-time clarity for complex systems. Built for engineering teams who refuse to be surprised.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="index.html#features">Features</a>
+          <a href="index.html#stats">Statistics</a>
+          <a href="contact.html">Pricing</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="about.html#team">Team</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow</h4>
+          <div class="social-icons">
+            <a href="#" aria-label="Pulsegrid on GitHub"><img class="social-icon" src="assets/icons/icon-github.svg"
+                alt=""></a>
+            <a href="#" aria-label="Pulsegrid on Twitter"><img class="social-icon" src="assets/icons/icon-twitter.svg"
+                alt=""></a>
+            <a href="#" aria-label="Pulsegrid on LinkedIn"><img class="social-icon" src="assets/icons/icon-linkedin.svg"
+                alt=""></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="current-year"></span> Pulsegrid, Inc. All rights reserved.</span>
+        <span>Built as a learning project — not a real company.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/navbar.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+
+</html>

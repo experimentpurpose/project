@@ -1,0 +1,196 @@
+/* =========================================================================
+   css/navbar.css
+   -------------------------------------------------------------------------
+   PURPOSE: ALL styling related to the site navigation bar lives here,
+   and only here. That includes:
+     - the logo + nav links layout
+     - the "scrolled" state (navbar becomes more opaque once you scroll down)
+     - the mobile hamburger button and slide-down mobile menu
+     - the active-link highlight
+
+   Why a separate file? The navbar is a self-contained component that
+   appears identically on every page. Keeping its CSS isolated means a
+   beginner can open just this one file to fully understand (or redesign)
+   the nav, without scrolling through hundreds of unrelated rules.
+   This file depends on the variables defined in style.css, so style.css
+   must be linked BEFORE navbar.css in the HTML <head>.
+   ========================================================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(15, 17, 21, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+/* Added by navbar.js once the user scrolls past a threshold.
+   Gives the navbar a solid background + visible border so it stays
+   legible over busy section backgrounds. */
+.navbar.is-scrolled {
+  background-color: rgba(15, 17, 21, 0.92);
+  border-bottom-color: var(--color-border);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) 0;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.navbar-logo img {
+  height: 28px;
+  width: 28px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.navbar-links a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  position: relative;
+  padding: 0.3rem 0;
+  transition: color var(--transition-fast);
+}
+
+.navbar-links a:hover {
+  color: var(--color-text);
+}
+
+/* Added by navbar.js to whichever link matches the current page,
+   so users always know where they are in the site. */
+.navbar-links a.is-active {
+  color: var(--color-accent);
+}
+
+.navbar-links a.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-accent);
+  border-radius: 2px;
+}
+
+.navbar-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* -------------------------------------------------------------------------
+   MOBILE MENU TOGGLE (hamburger icon)
+   Hidden on desktop, shown below the breakpoint.
+   ------------------------------------------------------------------------- */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.navbar-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* Added by navbar.js when the mobile menu is open - turns the
+   hamburger icon into an "X" shape. */
+.navbar-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* -------------------------------------------------------------------------
+   RESPONSIVE: collapse the link list into a slide-down mobile panel
+   ------------------------------------------------------------------------- */
+@media (max-width: 820px) {
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background-color: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height var(--transition-base), opacity var(--transition-base);
+  }
+
+  /* Added by navbar.js when the hamburger button is tapped */
+  .navbar-links.is-open {
+    max-height: 320px;
+    opacity: 1;
+  }
+
+  .navbar-links a {
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .navbar-links a.is-active::after {
+    display: none;
+  }
+
+  .navbar-cta {
+    display: none;
+  }
+
+  /* Show the "Get Started" button inside the mobile panel instead */
+  .navbar-links .navbar-cta-mobile {
+    display: block;
+    padding: var(--space-md);
+  }
+}
+
+@media (min-width: 821px) {
+  .navbar-cta-mobile {
+    display: none;
+  }
+}

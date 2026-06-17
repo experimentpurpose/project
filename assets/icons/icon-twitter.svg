@@ -1,0 +1,8 @@
+<!--
+  icon-twitter.svg
+  Purpose: Twitter/X logo used as a footer social link icon across all pages.
+  Usage: <img src="assets/icons/icon-twitter.svg" alt="Twitter" class="social-icon">
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+  <path d="M18.9 2H22l-7.2 8.2L23 22h-6.6l-5.2-6.8L5 22H2l7.7-8.8L1.3 2H8l4.7 6.2L18.9 2z"/>
+</svg>

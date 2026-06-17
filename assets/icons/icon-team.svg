@@ -1,0 +1,10 @@
+<!--
+  icon-team.svg
+  Purpose: Represents "team collaboration" in the homepage features section.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32">
+  <circle cx="9" cy="8" r="3"/>
+  <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke-linecap="round"/>
+  <circle cx="17" cy="7" r="2.5"/>
+  <path d="M14.5 14.2A5 5 0 0 1 21 19" stroke-linecap="round"/>
+</svg>
